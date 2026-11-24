@@ -11,6 +11,8 @@ ENTRY = "Out of office: ignored since March, alive purely out of spite. Your ema
 
 
 def main():
+    if not ENTRY or len(ENTRY) > 120:
+        raise ValueError("entry must be non-empty and at most 120 chars")
     out_dir = "/output"
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
